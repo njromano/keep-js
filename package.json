@@ -1,0 +1,22 @@
+{
+  "name": "keep-js",
+  "version": "1.0.0",
+  "description": "A transaction-based object history library for javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "history",
+    "state",
+    "tranaction",
+    "undo",
+    "redo"
+  ],
+  "author": "Nick Romano",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^24.9.0",
+    "node": "^13.1.0"
+  }
+}
