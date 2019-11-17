@@ -3,14 +3,12 @@ class JsonPath {
         this.path = path;
         // regex for parsing custom paths: \.(\w+)(?:\[(?:(\d)|([^\d]+:\w+))\])?
         const matches = path.matchAll(/\.(\w+)(?:\[(?:(\d)|([^\d]+:\w+))])?/g);
-        console.log(matches);
         this.expressions = [...matches].map(m => {
             return {
                 key: m[1],
                 index: m[2] || null,
                 query: m[3] || null }
         });
-        console.log(this.expressions);
     }
 
     getObject(state) {
@@ -18,14 +16,11 @@ class JsonPath {
 
         for(const exp of this.expressions) {
             head = head[exp.key];
-            console.log(head);
             if (exp.index) {
                 head = head[exp.index];
-                console.log(head);
             } else if (exp.query) {
                 const q = exp.query.split(':').map(s => { return { prop: s[0], value: s[1]}});
                 head = head.filter(h => h[q.prop] === q.value)[0];
-                console.log(head);
             }
         }
 
